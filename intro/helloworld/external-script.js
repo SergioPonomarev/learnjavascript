@@ -1,1 +1,1 @@
-alert('external I\'am JavaScript');
+console.log('external I\'am JavaScript');
