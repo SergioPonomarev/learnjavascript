@@ -1,0 +1,1 @@
+alert('external I\'am JavaScript');
