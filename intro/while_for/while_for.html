@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>While for</title>
+</head>
+<body>
+<script>
+/*    do {
+       var input = +prompt("Введите число больше 100", "");
+    } while (input <= 100 || !input);*/
+
+nextPrime:
+for (let i = 2; i <= 10; i++) {
+    for (let j = 2; j < i; j++) {
+        if (i % j === 0) continue nextPrime;
+    }
+    console.log(i);
+}
+</script>
+</body>
+</html>
