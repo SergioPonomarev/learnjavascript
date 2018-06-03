@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Recursion</title>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <script>
+            const sumTo = (n) =>
+            {
+                if(n === 1)
+                {
+                    return n;
+                }
+                return n + sumTo(n - 1);
+            }
+
+            console.log(sumTo(100));
+
+            const sumToLoop = n =>
+            {
+                let result = 0;
+                for(let i = 1; i <= n; i++)
+                {
+                    result += i;
+                }
+                return result;
+            }
+            console.log(sumToLoop(100));
+
+            const fact = n =>
+            {
+                if(n === 1)
+                {
+                    return n;
+                }
+                return n * fact(n - 1);
+            }
+            console.log(fact(5));
+
+            const fib = n =>
+            {
+                if(n <= 1)
+                {
+                    return n;
+                }
+                return fib(n - 1) + fib(n - 2);
+            }
+            console.log(fib(3));
+            console.log(fib(7));
+            const fibLoop = n =>
+            {
+                let a = 1;
+                let b = 1;
+                let c = a + b;
+                for(let i = 3; i < n; i++)
+                {
+                    a = b;
+                    b = c;
+                    c = a + b;
+                }
+                return c;
+            }
+            console.log(fibLoop(7));
+            console.log(fibLoop(77)); //5527939700884757
+            console.log(fibLoop(777)); 
+        </script>
+        
+    </body>
+</html>

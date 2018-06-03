@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Numbers</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <script>
+            const interfaceSum = () =>
+            {
+                var x = +prompt("Input first number:", "");
+                var y = +prompt("Input second number:", "")
+
+                alert(x + y);
+            }
+
+            console.log((0.1 + 0.2).toFixed(2) + "$");
+
+            function getDecimal(num)
+            {
+                var str = "" + num;
+                var zeroPos = str.indexOf(".");
+                if(zeroPos == -1) return 0;
+                str = str.slice(zeroPos);
+                return +str;
+            }
+
+            console.log(getDecimal(5));
+            console.log(getDecimal(12.5555666));
+            console.log(getDecimal(-12.5));
+            console.log(getDecimal(-12.588766));
+
+            const fibBinet = n =>
+            {
+                var phi = (1 + Math.sqrt(5)) / 2;
+                
+                return Math.round(Math.pow(phi, n) / Math.sqrt(5));
+            }
+
+            console.log(fibBinet(3));
+            console.log(fibBinet(77)); //5527939700884755
+        </script>
+    </body>
+</html>

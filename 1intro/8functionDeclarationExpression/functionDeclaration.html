@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>Function Declaration Expression</title>
+    </head>
+    <body>
+        <script>
+            'use strict'
+            function ask(question, yes, no)
+            {
+                if (confirm(question)) 
+                {
+                    yes()
+                }
+                else 
+                {
+                    no();
+                }
+            }
+
+            function showOk()
+            {
+                alert("You have agreed");
+            }
+
+            function showCancel()
+            {
+                alert("You have disagreed");
+            }
+
+            ask("Are you agree?", showOk, showCancel);
+
+            var sum = new Function('a,b', 'return a + b;');
+            var result = sum(1, 2);
+            alert(result);
+        </script>
+        
+    </body>
+</html>

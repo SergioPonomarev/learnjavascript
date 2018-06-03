@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Array</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <script>
+            var person = {
+                name : 'Ivan',
+                surname : 'Ivanov',
+                age : 16
+            };
+
+            for (var key in person) {
+                if(person.hasOwnProperty(key)) {
+                    console.log(person[key]);
+                }
+            }
+
+            var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+            /* for (var key in array) {
+                if (array.hasOwnProperty(key)) {
+                    alert(array[key]);
+                }
+            } */
+
+            array.hi = 'hello';
+
+            console.log(array);
+
+            for (var i = 0; i < array.length; i++) {
+                console.log(array[i]);
+            }
+
+            for (var key of array) {
+                console.log(key);
+            }
+
+            for (var key in array) {
+                if (array.hasOwnProperty(key)) {
+                    console.log(array[key]);
+                }
+            }
+
+            console.log(array);
+
+            var arr = [12, 1, 4, 5, 78, 3];
+            console.log(arr.sort());
+
+            function compare(a, b) {
+                return a - b;
+            }
+            console.log(arr.sort(compare));
+
+            var goods = [
+                ["product1", 2, 10],
+                ["product2", 1, 15],
+                ["product3", 12, 150],
+                ["product4", 5, 25]
+            ]
+            console.log(goods);
+
+            for (var i = 0; i < goods.length; i++) {
+                console.log(goods[i]);
+            }
+            
+            for (var i = 0; i < goods.length; i++) {
+                console.log(goods[i][i]);
+            }
+
+            for (var key of goods) {
+                console.log(key);
+            }
+        </script>
+    </body>
+</html>

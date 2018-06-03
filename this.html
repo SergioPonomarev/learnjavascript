@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>This</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <script>
+           var message = (function(name) {
+               return 'Hello ' + name + '!';
+           })('World');
+           console.log(message);
+
+           function sum(a, b) {
+               console.log(this === window);
+               this.myNumber = 20;
+               return a + b;
+           }
+           console.log(sum(15, 16));
+           console.log(window.myNumber);
+
+           function multiply(a, b) {
+               'use strict';
+               console.log(this === undefined);
+               return a * b;
+           }
+           console.log(multiply(2, 5));
+
+           function execute() {
+               'use strict';
+
+               function concat(str1, str2) {
+                   console.log(this === undefined);
+                   console.log(this === window);
+
+                   return str1 + str2;
+               }
+               console.log(concat('Hello ', 'world'));
+           }
+           execute();
+
+           var numbers = {
+               numA: 10,
+               numB: 5,
+               sum: function() {
+                   console.log(this === numbers);
+                   function calculate() {
+                       console.log(this === numbers);
+                       console.log(this === window);
+                       return this.numA + this.numB;
+                   }
+                   return calculate();
+               }
+           };
+           console.log(numbers.sum());
+
+           var numbers1 = {
+               numA: 10,
+               numB: 5,
+               sum: function() {
+                   console.log(this === numbers1);
+                   function calculate() {
+                       console.log(this === numbers1);
+                       console.log(this === window);
+                       return this.numA + this.numB;
+                   }
+                   return calculate.call(this);
+               }
+           };
+           console.log(numbers1.sum());
+
+           var myObject = {
+               helloFunction: function() {
+                   return 'Hello World';
+               }
+           };
+           var message1 = myObject.helloFunction();
+           console.log(message1);
+
+           console.log('');
+
+           console.log(['Hello', 'World'].join(', '));
+           console.log(({ten: function() {return 10;}}).ten());
+
+           var obj = {};
+           obj.myFunction = function() {
+               return new Date().toString();
+           };
+           console.log(obj.myFunction());
+
+           var calc = {
+               num: 0,
+               increment: function() {
+                   console.log(this === calc);
+                   return this.num += 1;
+               }
+           };
+           console.log(calc.increment());
+           console.log(calc.increment());
+
+           console.log('');
+
+           var myDog = Object.create({
+               sayName: function() {
+                   console.log(this === myDog);
+                   return this.name;
+               }
+           });
+           myDog.name = 'Milo';
+           console.log(myDog.sayName());
+
+           class Planet {
+               constructor(name) {
+                   this.name = name;
+               }
+               getName() {
+                   console.log(this === earth);
+                   return this.name;
+               }
+           }
+
+           var earth = new Planet('Earth');
+           console.log(earth.getName());
+
+           console.log('');
+
+           function Animal(type, legs) {
+               this.type = type;
+               this.legs = legs;
+               this.logInfo = function() {
+                   console.log(this === myCat);
+                   console.log('The ' + this.type + ' has ' + this.legs + ' legs');
+               };
+           }
+
+           var myCat = new Animal('Cat', 4);
+           myCat.logInfo();
+           //setTimeout(myCat.logInfo, 1000);
+           //setTimeout(myCat.logInfo.bind(myCat), 1000);
+
+           console.log('');
+
+           function Country(name, traveled) {
+               this.name = name ? name : 'United Kingdom';
+               this.traveled = Boolean(traveled);
+           }
+
+           Country.prototype.travel = function() {
+               this.traveled = true;
+           };
+
+           var france = new Country('France', false);
+           var unitedKingdom = new Country;
+
+           france.travel();
+
+           console.log(france);
+           console.log(unitedKingdom);
+
+           class City {
+               constructor(name, traveled) {
+                   this.name = name;
+                   this.traveled = false;
+               }
+               travel() {
+                   this.traveled = true;
+               }
+           }
+
+           var paris = new City('Paris', false);
+           console.log(paris);
+           paris.travel();
+           console.log(paris);
+
+           function Vehicle(type, wheelsCount) {
+               this.type = type;
+               this.wheelsCount = wheelsCount;
+               return this;
+           }
+           var car = Vehicle('Car', 4);
+           console.log(car.type);
+           console.log(car.wheelsCount);
+           console.log(car === window);
+
+           var ford = Vehicle('Ford', 4);
+           console.log(ford.type);
+           console.log(ford.wheelsCount);
+           
+           console.log('');
+           
+           function Vehicle1(type, wheelsCount) {
+               if(!(this instanceof Vehicle1)) {
+                   throw Error('Error: Incorrect invocation');
+               }
+               this.type = type;
+               this.wheelsCount = wheelsCount;
+               return this;
+           }
+           var car1 = new Vehicle1('Car1', 4);
+           console.log(car1.type);
+           console.log(car1.wheelsCount);
+           console.log(car1 instanceof Vehicle1);
+
+           //var brokenCar = Vehicle1('Broken car', 3);
+           
+           console.log('');
+
+           var rabbit = {
+               name: 'White Rabbit'
+           };
+           
+           function concatName(string) {
+               console.log(this === rabbit);
+               return string + this.name;
+           }
+
+           console.log(concatName.apply(rabbit, ['Hello ']));
+           console.log(concatName.call(rabbit, 'Bye '));
+
+           console.log('');
+
+           function Runner(name) {
+               console.log(this instanceof Rabbit);
+               this.name = name;
+           }
+
+           function Rabbit(name, countLegs) {
+               console.log(this instanceof Rabbit);
+               Runner.call(this, name);
+               this.countLegs = countLegs;
+           }
+
+           var myRabbit = new Rabbit('White Rabbit', 4);
+           console.log(myRabbit);
+
+           function concatStr(str) {
+               return this + str;
+           }
+
+           var foo = concatStr.bind('Hello ');
+           console.log(foo('Bobby'));
+
+           console.log('');
+           var numbers = {
+               array: [3, 5, 10],
+               getNumbers: function() {
+                   return this.array;
+               }
+           };
+
+           var boundGetNumbers = numbers.getNumbers.bind(numbers);
+           console.log(boundGetNumbers());
+           var simpleGetNumbers = numbers.getNumbers;
+           console.log(simpleGetNumbers());
+        </script>
+    </body>
+</html>
